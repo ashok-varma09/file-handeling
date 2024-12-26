@@ -1,0 +1,31 @@
+
+
+#include <stdio.h>
+
+int main()
+{
+   FILE *ptr = fopen("file1.txt","r");
+   FILE *ptr2 = fopen("file2.txt","a");
+   
+   char temp[100];
+   if (ptr==NULL || ptr2==NULL)
+   {
+       if (ptr==NULL)
+       {
+         printf("File 1 is null");  
+       }
+       else
+       {
+         printf("File 2 is null");  
+       }
+   }
+   else
+   {
+       while (fgets(temp,5,ptr)!=NULL)
+       {
+         fputs(temp,ptr2);  
+       }
+   }
+
+    return 0;
+}
