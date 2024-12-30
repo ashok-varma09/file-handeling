@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char temp;
+    int space = 0, line = 0, charCount = 0;
+
+   
+    FILE *ptr = fopen("1", "r");
+    
+    if (ptr == NULL) {
+        printf("ERROR!!!\n");
+        return 0;
+    }
+
+    
+    while ((temp = fgetc(ptr)) != EOF) {
+        if (temp == '\n') {
+            line++;
+        }
+        if (temp == ' ') {
+            space++;
+        }
+            charCount++;
+    }
+
+    fclose(ptr);
+
+
+    FILE *ptr2 = fopen("2", "w");
+    if (ptr2 == NULL) {
+        printf("ERROR opening output file\n");
+        return 0;
+    }
+
+   
+    fprintf(ptr2, "Spaces: %d\nTotal Lines: %d\nTotal Characters: %d\n", space, line, charCount);
+
+    
+    fclose(ptr2);
+
+    return 0;
+}
+ 
