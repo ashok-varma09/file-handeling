@@ -1,0 +1,55 @@
+#include <stdio.h>
+#include<string.h>
+
+int main()
+{
+    char temp;
+	int space=0,line=0,length;
+
+	
+	FILE *ptr=fopen("1","r");
+     
+     if (ptr==NULL)
+     {
+         printf("ERROE!!!");
+         return 0;
+     }
+
+	
+
+
+
+
+	if (ptr==NULL)
+	{
+		printf("File not found !!");
+		return 0;
+	}
+
+		while (ptr)
+		{
+			temp = fgetc(ptr);
+			if (temp==EOF)
+			{
+			 break;   
+			}
+			if (temp=='\n')
+			{
+			    line++;
+			}
+			if (temp==' ')
+			{
+			    space++;
+			}
+		
+		}
+		
+	fclose(ptr);
+	FILE *ptr2= fopen("2","w");
+		fprintf(ptr2,"spaces are %d\ntotal lines are %d ",space,line);
+	
+	fclose(ptr);
+	return 0;
+}
+
+
